@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        app:srcCompat="@drawable/ic_taxi_schedule"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+    <View
+        android:layout_width="10dp"
+        android:layout_height="175dp"
+        android:background="#c0c0c0"
+        android:layout_marginLeft="43dp"
+        android:layout_below="@+id/imageView4" />
+
+    <TextView
+        android:id="@+id/txtFromTo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/imageView4"
+        android:layout_toEndOf="@+id/imageView4" />
+
+    <TextView
+        android:id="@+id/txtTaxiNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtFromTo"
+        android:layout_below="@+id/txtFromTo"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/txtDriverName"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtTaxiNo"
+        android:layout_below="@+id/txtTaxiNo"
+        android:layout_marginTop="5dp"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/imgPhoto"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="52dp"
+        app:srcCompat="@drawable/user_image"
+        android:layout_alignTop="@+id/txtDriverName"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/txtPickupTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtDriverName"
+        android:layout_below="@+id/txtDriverName"
+        android:layout_marginTop="5dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/txtDropTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtDriverName"
+        android:text="TextView"
+        android:layout_below="@+id/txtPickupTime" />
+
+    <TextView
+        android:id="@+id/txtMobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtDropTime"
+        android:layout_below="@+id/txtDropTime"
+        android:autoLink="phone"
+        android:linksClickable="true"
+        android:layout_marginTop="5dp"
+        android:text="TextView" />
+
+</RelativeLayout>

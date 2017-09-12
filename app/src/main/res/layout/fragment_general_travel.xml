@@ -1,0 +1,86 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.spicasoft.sefpro.GeneralTravel">
+
+    <!-- TODO: Update blank fragment layout -->
+    !-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="57dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="@dimen/element_space"
+                android:textSize="32sp"
+                android:text="GENERAL TRAVEL INFO" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="match_parent"
+                android:layout_height="144dp"
+                app:srcCompat="@drawable/general_travel" />
+            <TextView
+                android:id="@+id/txt_NearAirport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/element_space"
+                android:layout_gravity="left"
+                android:textSize="17sp"
+                android:gravity="left"
+                android:autoLink="phone"
+                android:linksClickable="true"
+                android:text="@string/nearest_airport" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/element_space"
+                android:layout_gravity="left"
+                android:textSize="17sp"
+                android:gravity="left"
+                android:text="@string/issuance_contact" />
+
+            <ListView
+                android:id="@+id/lstContact"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+
+                />
+
+            <TextView
+                android:id="@+id/lblweather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/element_space"
+                android:layout_marginRight="@dimen/element_space"
+                android:layout_gravity="left"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:drawableLeft="@drawable/ic_weather_forecast"
+                android:text="@string/lbl_weather_forecast" />
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_margin="@dimen/element_space"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</FrameLayout>

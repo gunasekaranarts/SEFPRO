@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_Inspection"
+            android:icon="@drawable/ic_assignment_turned"
+            android:title="Inspection" />
+        <item
+            android:id="@+id/nav_Safety"
+            android:icon="@drawable/ic_safety"
+            android:title="Safety" />
+        <item
+            android:id="@+id/nav_GeneralTravel"
+            android:icon="@drawable/ic_work_black_24dp"
+            android:title="General Travel" />
+        <item
+            android:id="@+id/nav_food"
+            android:icon="@drawable/ic_hot_food"
+            android:title="Food Info" />
+        <item
+            android:id="@+id/nav_Travel"
+            android:icon="@drawable/ic_directions_bus"
+            android:title="Travel Itinerary" >
+            <menu>
+                <item
+                    android:id="@+id/nav_Travel_Flight"
+                    android:icon="@drawable/ic_flight_schedule"
+                    android:title="Flights" />
+                <item
+                    android:id="@+id/nav_Travel_Taxi"
+                    android:icon="@drawable/ic_taxi_schedule"
+                    android:title="Taxi" />
+
+                <item
+                    android:id="@+id/nav_Travel_Hotel"
+                    android:icon="@drawable/ic_hotel_schedule"
+                    android:title="Hotel" />
+
+            </menu>
+        </item>
+
+
+    </group>
+
+    <item android:title="Communicate with SEFPRO">
+        <menu>
+            <item
+                android:id="@+id/nav_Facebook"
+                android:icon="@drawable/ic_face_book"
+                android:title="Facebook" />
+            <item
+                android:id="@+id/nav_LinkedIn"
+                android:icon="@drawable/ic_linked_in"
+                android:title="LinkedIn" />
+            <item
+                android:id="@+id/nav_YouTube"
+                android:icon="@drawable/ic_action_youtube"
+                android:title="Youtube" />
+            <item
+                android:id="@+id/nav_Twitter"
+                android:icon="@drawable/ic_action_twitter"
+                android:title="Twitter" />
+        </menu>
+    </item>
+
+</menu>

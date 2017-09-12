@@ -1,0 +1,78 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.spicasoft.sefpro.Safety">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/element_space"
+            android:textSize="32sp"
+            android:text="SAFETY" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="181dp"
+            app:srcCompat="@drawable/safety" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/element_space"
+            android:gravity="center_horizontal"
+            android:text="General Safety information which are covered in the Safety PPT." />
+        <TextView
+            android:id="@+id/lblSafetyinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/element_space"
+            android:layout_marginRight="@dimen/element_space"
+            android:layout_gravity="left"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/lbl_safety_ppt" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/element_space"
+            android:gravity="left"
+            android:text="@string/lbl_safety_Shoe" />
+
+        <Spinner
+            android:id="@+id/spnShoeSize"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/element_space"
+            android:gravity="left"
+            android:layout_height="wrap_content"
+            android:entries="@array/Shoe_sizes"/>
+
+        <Button
+            android:id="@+id/btn_Shoesize"
+            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_marginTop="@dimen/element_space"
+            android:background="@color/colorLoginBtn"
+            android:textColor="@color/colorLoginTxt"
+            android:layout_gravity="center_horizontal"
+            android:text="Submit" />
+
+    </LinearLayout>
+
+
+</FrameLayout>

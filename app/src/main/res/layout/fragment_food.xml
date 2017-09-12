@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="57dp" />
+
+    <TextView
+        android:id="@+id/txtLunchMenu"
+        android:layout_marginTop="@dimen/element_space"
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="@string/lbl_lunch_menu" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_marginTop="@dimen/element_space"
+        android:layout_height="2dp"
+        android:background="#c0c0c0"/>
+    <ListView
+        android:id="@+id/lstFood"
+        android:layout_marginTop="@dimen/element_space"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>

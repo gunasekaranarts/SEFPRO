@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="5dp"
+        app:srcCompat="@drawable/ic_hotel_schedule"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+    <View
+        android:layout_width="10dp"
+        android:layout_height="200dp"
+        android:background="#c0c0c0"
+        android:layout_marginLeft="43dp"
+        android:layout_below="@+id/imageView4"
+        android:id="@+id/view" />
+
+    <TextView
+        android:id="@+id/txtHotelName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="5dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/imageView4"
+        android:layout_toEndOf="@+id/imageView4" />
+
+    <TextView
+        android:id="@+id/txtAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtHotelName"
+        android:layout_below="@+id/txtHotelName"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/txtBookingName"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtAddress"
+        android:layout_below="@+id/txtAddress"
+        android:layout_marginTop="5dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/txtHotelContact"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtBookingName"
+        android:layout_below="@+id/txtBookingName"
+        android:layout_marginTop="5dp"
+        android:autoLink="phone"
+        android:linksClickable="true"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/txtCheckin"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtHotelContact"
+        android:layout_below="@+id/txtHotelContact"
+        android:layout_marginTop="5dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/txtCheckout"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/txtCheckin"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/txtRoomNo"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/txtHotelContact"
+        android:layout_alignParentEnd="true"
+        android:text="TextView"
+        android:layout_alignStart="@+id/txtBookingNo" />
+
+    <TextView
+        android:id="@+id/txtBookingNo"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/txtBookingName"
+        />
+
+
+</RelativeLayout>

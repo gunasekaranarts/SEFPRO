@@ -1,0 +1,67 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.spicasoft.sefpro.Login">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/element_space"
+        android:layout_marginRight="@dimen/element_space"
+        >
+
+        <TextView
+            android:id="@+id/lbl_UserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_username"
+            android:layout_marginTop="@dimen/element_space"/>
+
+        <EditText
+            android:id="@+id/txt_UserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:layout_marginTop="@dimen/element_space"
+            android:text="@string/lbl_username" />
+
+        <TextView
+            android:id="@+id/lbl_Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/element_space"
+            android:text="@string/lbl_passwordtxt" />
+
+        <EditText
+            android:id="@+id/txt_Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_marginTop="@dimen/element_space"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btn_Login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorLoginBtn"
+            android:layout_marginTop="@dimen/element_space"
+            android:textColor="@color/colorLoginTxt"
+            android:text="@string/btn_logintxt" />
+
+        <TextView
+            android:id="@+id/lbl_fpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/element_space"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:text="@string/lbtn_forgot_password" />
+    </LinearLayout>
+
+
+</FrameLayout>

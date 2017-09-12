@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">SEFPRO</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="lbl_username">User Name</string>
+    <string name="lbl_passwordtxt">Password</string>
+    <string name="lbtn_forgot_password">Lost your password?</string>
+    <string name="btn_logintxt">Login</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve">AIzaSyCcZUu6-KFCAkDLTjnoeu8LCv_EdgeNA3Q</string>
+    <string name="lbl_weather_forecast">Click here to know Weather forecast at Plant</string>
+    <string name="lbl_safety_ppt">Download safety info</string>
+    <string name="lbl_safety_Shoe">Select your shoe size.</string>
+    <string name="lbl_lunch_menu"><b>Lunch Menu</b> (Only veg food served at plant.)</string>
+    <string name="lbl_travel_Agenda"><b>Travel Itinerary</b></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title_activity_map">MapActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string-array name="Shoe_sizes">
+        <item>Select</item>
+        <item>6/39/5.5 - US/Euro/UK</item>
+        <item>6.5/39/6 - US/Euro/UK</item>
+        <item>7/40/6.5 - US/Euro/UK</item>
+        <item>7.5/40-41/7 - US/Euro/UK</item>
+        <item>8/41/7.5 - US/Euro/UK</item>
+        <item>8.5/41-42/8 - US/Euro/UK</item>
+        <item>9/42/8.5 - US/Euro/UK</item>
+        <item>9.5/42-43/9 - US/Euro/UK</item>
+        <item>10/43/9.5 - US/Euro/UK</item>
+        <item>10.5/43-44/10 - US/Euro/UK</item>
+    </string-array>
+
+    <string name="nearest_airport"><b>Nearest Airport at plant:</b> \n Coimbatore International Airport (CJB) \n <b>Address:</b> \n Avinashi Road, Coimbatore, TamilNadu 641014 \n <b>Phone:</b>0422 259 2155.</string>
+    <string name="issuance_contact"><b>Invitation letter issuance contact:</b></string>
+</resources>
