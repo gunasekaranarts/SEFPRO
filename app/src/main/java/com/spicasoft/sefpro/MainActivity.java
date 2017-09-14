@@ -4,15 +4,21 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Rect;
+import android.net.ParseException;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.MenuInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -25,10 +31,17 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.RemoteMessage;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar=null;
+    private int hot_number = 0;
+    private TextView ui_hot = null;
     NavigationView navigationView=null;
+    boolean doubleBackToExitPressedOnce = false;
     Fragment fragment = null;
     private static final int REQUEST_APP_PERMISSIONS = 101;
     private static final int REQUEST_GPS = 102;
@@ -43,14 +56,34 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //set the fragment initially
         setUpPermission();
-        Login login_fragment=new Login();
+        Intent i = getIntent();
+        Bundle extras = i.getExtras();
+        if(extras != null) {
+            String notification_count = extras.getString("notification_count");
+            if (notification_count!=null) {
+                try {
+                    updateHotCount(Integer.parseInt(notification_count));
+                } catch(NumberFormatException nfe) {
+                    // Handle parse error.
+                }
+                fragment=new Notification();
+
+            }else
+                fragment=new Login();
+        }else
+            fragment=new Login();
+
+
         FragmentTransaction fragmentTransaction=
                 getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container,login_fragment);
+        fragmentTransaction.replace(R.id.fragment_container,fragment);
         fragmentTransaction.commit();
+        setContentView(R.layout.activity_main);
+        //set the fragment initially
+
+
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -64,6 +97,9 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
+        if(fragment instanceof Notification){
+            fab.hide();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -85,15 +121,17 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.replace(R.id.fragment_container,fragment);
                 fragmentTransaction.commit();
                 FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-                fab.show();
+                fab.hide();
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
         //String Token= AppPreferences.getInstance(this).getFcmToken();
+        Log.d("MyFirebaseIIDService", "Refreshed token: " + FirebaseInstanceId.getInstance().getToken());
         //Toast.makeText(this,AppPreferences.getInstance(this).getFcmToken(),Toast.LENGTH_LONG).show();
-        //FirebaseMessaging.getInstance().subscribeToTopic("news");
+        FirebaseMessaging.getInstance().subscribeToTopic("news");
     }
+
 
     @Override
     public void onBackPressed() {
@@ -101,7 +139,20 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed();
+                return;
+            }
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce=false;
+                }
+            }, 2000);
         }
     }
     public void setUpPermission() {
@@ -151,21 +202,98 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.main, menu);
+        final View menu_hotlist = menu.findItem(R.id.menu_hotlist).getActionView();
+        ui_hot = (TextView) menu_hotlist.findViewById(R.id.hotlist_hot);
+        updateHotCount(hot_number);
+        new MyMenuItemStuffListener(menu_hotlist, "Show Notifications") {
+            @Override
+            public void onClick(View v) {
+                FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+                if(!(fragment instanceof Notification)) {
+                    fragment = new Notification();
+                }
+                fab.hide();
+                FragmentTransaction fragmentTransaction =
+                        getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.commit();
+            }
+        };
         return true;
     }
+    public void updateHotCount(final int new_hot_number) {
+        hot_number = hot_number+new_hot_number;
+        if (ui_hot == null) return;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (new_hot_number == 0)
+                    ui_hot.setVisibility(View.INVISIBLE);
+                else {
+                    ui_hot.setVisibility(View.VISIBLE);
+                    ui_hot.setText(Integer.toString(new_hot_number));
+                }
+            }
+        });
+    }
+    static abstract class MyMenuItemStuffListener implements View.OnClickListener, View.OnLongClickListener {
+        private String hint;
+        private View view;
+        private Fragment fragment;
 
+        MyMenuItemStuffListener(View view, String hint) {
+            this.view = view;
+            this.hint = hint;
+            view.setOnClickListener(this);
+            view.setOnLongClickListener(this);
+        }
+
+        @Override abstract public void onClick(View v);
+
+        @Override public boolean onLongClick(View v) {
+            final int[] screenPos = new int[2];
+            final Rect displayFrame = new Rect();
+            view.getLocationOnScreen(screenPos);
+            view.getWindowVisibleDisplayFrame(displayFrame);
+            final Context context = view.getContext();
+            final int width = view.getWidth();
+            final int height = view.getHeight();
+            final int midy = screenPos[1] + height / 2;
+            final int screenWidth = context.getResources().getDisplayMetrics().widthPixels;
+            Toast cheatSheet = Toast.makeText(context, hint, Toast.LENGTH_SHORT);
+            if (midy < displayFrame.height()) {
+                cheatSheet.setGravity(Gravity.TOP | Gravity.RIGHT,
+                        screenWidth - screenPos[0] - width / 2, height);
+            } else {
+                cheatSheet.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, height);
+            }
+            cheatSheet.show();
+            return true;
+        }
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        switch(id) {
+            case R.id.menu_hotlist:
+                FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+                if(!(fragment instanceof Notification)) {
+                    fragment = new Notification();
+                }
+                fab.hide();
+                FragmentTransaction fragmentTransaction =
+                        getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.commit();
+        }
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }

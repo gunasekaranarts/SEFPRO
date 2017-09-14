@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "8611703108",
+    "firebase_url": "https://sefpro-3b17c.firebaseio.com",
+    "project_id": "sefpro-3b17c",
+    "storage_bucket": "sefpro-3b17c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:8611703108:android:ad1881533e75d3e9",
+        "android_client_info": {
+          "package_name": "com.spicasoft.sefpro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "8611703108-61khpp1du0alordcm9sqb0hfa17mcpku.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.spicasoft.sefpro",
+            "certificate_hash": "b3cfc7345c9544f8bb62b7e1b7cac2df133f3ca8"
+          }
+        },
+        {
+          "client_id": "8611703108-0nnf5sbig12992jgo8lu6mc460dbrf7i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZexjWmMluOsEV-k7eULUYveZpS5zp0PI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "8611703108-0nnf5sbig12992jgo8lu6mc460dbrf7i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
