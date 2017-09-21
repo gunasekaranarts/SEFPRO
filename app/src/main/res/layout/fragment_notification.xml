@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/lightGrayBackground">
     <Space
         android:layout_width="match_parent"
         android:layout_height="57dp" />
 
     <TextView
-        android:id="@+id/txtLunchMenu"
+        android:id="@+id/txtNotifications"
         android:layout_marginTop="@dimen/element_space"
         android:layout_marginLeft="5dp"
         android:layout_width="wrap_content"
@@ -19,9 +20,14 @@
         android:layout_marginTop="@dimen/element_space"
         android:layout_height="2dp"
         />
+
     <ListView
-        android:id="@+id/lstFood"
+        android:id="@+id/lstNotifications"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/element_space"
+        android:layout_marginRight="@dimen/element_space"
+        android:dividerHeight="10dp"
         android:layout_marginTop="@dimen/element_space"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+       />
 </LinearLayout>

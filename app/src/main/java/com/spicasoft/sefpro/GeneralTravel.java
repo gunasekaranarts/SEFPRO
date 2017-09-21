@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -26,27 +27,27 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+import utils.NetworkUtil;
+
 /**
  * Created by USER on 12-09-2017.
  */
 
 public class GeneralTravel extends Fragment {
-    MapView mapView;
-    GoogleMap googleMap;
-    int locationCount = 0;
-    TextView lblweather=null;
     public static final String[] Names = new String[] { "Rajaram",
             "Sandeep" };
-
     public static final String[] Emails = new String[] {
             "rajaramk@sefpro.com",
             "sandeeps@sefpro.com" };
     public static final String[] Mobiles = new String[] {
             "+919500000000",
             "+919500000001" };
-
     public static final Integer[] images = { R.drawable.ic_contact_info,
             R.drawable.ic_contact_info };
+    MapView mapView;
+    GoogleMap googleMap;
+    int locationCount = 0;
+    TextView lblweather=null;
     ListView listView;
     List<RowItem> rowItems;
     public GeneralTravel() {
@@ -59,27 +60,34 @@ public class GeneralTravel extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_general_travel, container, false);
+        listView = (ListView) view.findViewById(R.id.lstContact);
+        setAdapter();
+        lblweather=(TextView) view.findViewById(R.id.lblweather);
+        lblweather.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(NetworkUtil.isNetworkAvailable(getContext())){
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://www.accuweather.com/en/in/kozhikode/188806/weather-forecast/188806"));
+                startActivity(intent);
+                }
+                else{
+                    Toast.makeText(getContext(), getString(R.string.no_internet_connection), Toast.LENGTH_LONG)
+                            .show();
+                }
+            }
+        });
+        return view;
+    }
+
+    private void setAdapter() {
         rowItems = new ArrayList<RowItem>();
         for (int i = 0; i < Names.length; i++) {
             RowItem item = new RowItem(images[i], Names[i], Emails[i],Mobiles[i]);
             rowItems.add(item);
         }
-        listView = (ListView) view.findViewById(R.id.lstContact);
-        CustomContactAdapter adapter = new CustomContactAdapter(view.getContext(), rowItems);
+        CustomContactAdapter adapter = new CustomContactAdapter(getActivity(), rowItems);
         listView.setAdapter(adapter);
-
-
-
-        lblweather=(TextView) view.findViewById(R.id.lblweather);
-        lblweather.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://www.accuweather.com/en/in/kozhikode/188806/weather-forecast/188806"));
-                startActivity(intent);
-            }
-        });
-        return view;
     }
 
     @Override

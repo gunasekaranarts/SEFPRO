@@ -5,6 +5,9 @@ import android.util.Log;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
+import utils.AppPreferences;
+import utils.FcmTokenUpdate;
+
 /**
  * Created by USER on 13-09-2017.
  */
@@ -41,5 +44,9 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
      */
     private void sendRegistrationToServer(String token) {
         // TODO: Implement this method to send token to your app server.
+        AppPreferences.getInstance(this).setFcmToken(token);
+
+            // Implement code to update registration token to server
+
     }
 }

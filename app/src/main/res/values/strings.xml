@@ -16,6 +16,7 @@
     <string name="lbl_lunch_menu"><b>Lunch Menu</b> (Only veg food served at plant.)</string>
     <string name="lbl_travel_Agenda"><b>Travel Itinerary</b></string>
     <string name="hotlist">Notifications</string>
+    <string name="no_internet_connection">No active internet connection found. Some functionality may not work well without internet</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
