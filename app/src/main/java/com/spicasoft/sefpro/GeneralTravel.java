@@ -124,12 +124,12 @@ public class GeneralTravel extends Fragment {
                     googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
                     LatLng Kanjikode = new LatLng(10.7921007, 76.7411948);
                     googleMap.addMarker(new MarkerOptions().position(Kanjikode)
-                            .title("SEPR India – Palakkad")
+                            .title("SEFPRO India – Palakkad")
                             .snippet("Kanjikode West, Palakkad, Kerala, India, 678623")
                     );
                     LatLng Perundurai = new LatLng(11.2554205,77.5648672);
                     googleMap.addMarker(new MarkerOptions().position(Perundurai)
-                            .title("SEPR India – Perundurai")
+                            .title("SEFPRO India – Perundurai")
                             .snippet("SEZ UNIT, SIPCOT Industrial Growth Centre Perundurai, Erode Dist - 638 052, Tamilnadu, India")
                     );
 

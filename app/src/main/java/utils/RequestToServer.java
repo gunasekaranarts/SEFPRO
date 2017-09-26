@@ -26,7 +26,7 @@ import java.util.Map;
 public class RequestToServer {
     static String userName=null;
     static String password=null;
-    static String Server="http://192.168.1.6:45455/api/sefpro/";
+    static String Server="http://192.168.1.2:45455/api/sefpro/";
 
     public static void RequestToServer(Context context,String Url,JSONObject ReqObj
             ,Response.Listener<JSONObject> responseListener,Response.ErrorListener errListener){
